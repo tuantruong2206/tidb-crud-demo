@@ -1,0 +1,30 @@
+
+host: 45.77.255.120
+
+server:
+  port: 8066
+  tomcat:
+    max-http-form-post-size: 2147483648
+spring:
+  datasource:
+    url: jdbc:mysql://45.77.255.120:4000/tidb_crud_demo
+    username: root
+    password:
+    hikari:
+      max-lifetime: 1765000
+      maximum-pool-size: 10
+#    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+#  flyway:
+#    enabled: false
+#    baseline-on-migrate: true
+#    locations: classpath:migration/local
