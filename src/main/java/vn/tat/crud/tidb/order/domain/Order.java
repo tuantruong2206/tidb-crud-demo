@@ -22,10 +22,11 @@ public class Order {
 
     public void orderCar(Car car) {
         car.doNote("this is in Order Business ...");
-        description = String.format(" order car %", car.toString());
+        description = String.format(" order car %s", car.toString());
         quantity = 10;
         unit = "num of cars";
         price = 1000;
         amount = price * quantity;
+
     }
 }

@@ -13,4 +13,6 @@ public class CarDTO {
 
     private String branchName;
     private Integer seats;
+
+    private String note;
 }

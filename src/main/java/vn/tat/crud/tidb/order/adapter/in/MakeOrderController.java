@@ -16,6 +16,7 @@ import vn.tat.crud.tidb.dto.JsonResponse;
 import vn.tat.crud.tidb.order.adapter.in.dto.CarDTO;
 import vn.tat.crud.tidb.order.adapter.in.dto.mapper.CarMapper;
 import vn.tat.crud.tidb.order.application.port.in.MakeOrderUserCase;
+import vn.tat.crud.tidb.order.domain.Car;
 import vn.tat.crud.tidb.util.HeaderUtil;
 import vn.tat.crud.tidb.validation.ProductValidator;
 
@@ -40,11 +41,11 @@ public class MakeOrderController {
     private final CarMapper carMapper;
 
     @PostMapping()
-    public ResponseEntity<JsonResponse<CarDTO>> createNewProduct(@Valid @RequestBody CarDTO carDTO, BindingResult bindingResult) throws URISyntaxException {
+    public ResponseEntity<CarDTO> createNewProduct(@Valid @RequestBody CarDTO carDTO, BindingResult bindingResult) throws URISyntaxException {
         ProductValidator.validate(bindingResult);
         log.info("REST request to update Car: {}", carDTO);
-        makeOrderService.makeOrderCar(this.carMapper.toDomainEntity(carDTO));
-        return null;
+        Car car = makeOrderService.makeOrderCar(this.carMapper.toDomainEntity(carDTO));
+        return ResponseEntity.created(new URI("")).body(this.carMapper.toDto(car));
         /*product = this.productService.save(product);
         return ResponseEntity.created(new URI("/inventory/product/" + product.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, product.getId().toString()))

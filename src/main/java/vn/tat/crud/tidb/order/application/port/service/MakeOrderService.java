@@ -27,9 +27,13 @@ public class MakeOrderService implements MakeOrderUserCase {
 
 
     @Override
-    public Order makeOrderCar(Car car) {
+    public Car makeOrderCar(Car car) {
         Order order = new Order();
         order.orderCar(car);
-        return orderPersistence.makeOrderCar(order);
+        Order resultOrder = orderPersistence.makeOrderCar(order);
+
+        car.doNote(String.valueOf(resultOrder.getId()));
+
+        return car;
     }
 }

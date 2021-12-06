@@ -21,7 +21,8 @@ public interface CarMapper {
 
     @Mappings({
             @Mapping(source = "car.branchName", target = "branchName"),
-            @Mapping(source = "car.seats", target = "seats")
+            @Mapping(source = "car.seats", target = "seats"),
+            @Mapping(source = "car.note", target = "note")
     })
     CarDTO toDto(Car car);
 
@@ -30,4 +31,7 @@ public interface CarMapper {
             @Mapping(source = "carDto.seats", target = "seats")
     })
     Car toDomainEntity(CarDTO carDto);
+
+
+
 }

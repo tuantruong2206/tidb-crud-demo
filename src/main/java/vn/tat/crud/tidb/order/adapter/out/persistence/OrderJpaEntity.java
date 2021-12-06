@@ -29,7 +29,7 @@ public class OrderJpaEntity {
     private Long id;
 
     @NotNull
-    @Size(max = 50, min = 3, message = "Invalid length")
+    @Size(max = 200, min = 3, message = "Invalid length bla bla bla")
     @Column(name = "description")
     private String description;
 

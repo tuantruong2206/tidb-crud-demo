@@ -11,5 +11,5 @@ import vn.tat.crud.tidb.order.domain.Order;
  */
 public interface MakeOrderUserCase {
 
-    Order makeOrderCar(Car car);
+    Car makeOrderCar(Car car);
 }
